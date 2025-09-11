@@ -2,14 +2,14 @@ const container = document.querySelector("body");
 const myTagsBody = ["p", "h3", "div"];
 const myTagsDiv = ["h1", "p"];
 
-const content = myTagsBody.map(tag => document.createElement(tag))
+const content = myTagsBody.map(tag => document.createElement(tag)) //whatever the fuck I did here
 .reduce((acc, element) => {
   if (element.tagName !== "DIV") {
     acc[element.tagName.toLowerCase()] = element;
   }
   else if (element.tagName === "DIV") {
     let divContent = myTagsDiv.map(a => document.createElement(a));
-    divContent.forEach(el => element.appendChild(el));
+    divContent.forEach(el => element.appendChild(el)); // why? idk
     acc[element.tagName.toLowerCase()] = element;
   }
   return acc;
@@ -26,3 +26,11 @@ content.h3.style.cssText = "color:blue"
 content.div.style.cssText = "background-color: pink; border: 1px solid black;"
 content.div.querySelector("h1").textContent = "I'm in a div!";
 content.div.querySelector("p").textContent = "ME TOO!";
+
+const btn = document.createElement("button");
+btn.textContent = "Clickity Click";
+btn.addEventListener("click", function (e) {
+  console.log(e);
+  e.target.style.background = "red"; // hahah
+});
+container.appendChild(btn);
